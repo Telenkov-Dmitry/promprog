@@ -1,0 +1,16 @@
+version: '2.2'
+services:
+  rabbit:
+    image: "rabbitmq"
+  sender:
+    build: 
+      context: .
+      dockerfile: senderDockerfile
+    depends_on: 
+     - rabbit
+  consumer:
+    build: 
+      context: .
+      dockerfile: consumerDockerfile
+    depends_on: 
+     - rabbit
